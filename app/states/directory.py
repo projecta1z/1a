@@ -8,8 +8,8 @@ from app.models import Username
 
 
 SAMPLE_USERNAMES = (
-    "atlas",
-    "birch",
+    "amber",
+    "boon",
     "clover",
     "drift",
     "ember",
