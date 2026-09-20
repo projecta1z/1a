@@ -1,8 +1,8 @@
-"""create_username_directory
+"""import_username_directory_schema
 
-Revision ID: 37b3d3859e5f
+Revision ID: aa60b4a9423d
 Revises: 
-Create Date: 2026-09-20 13:51:40.402777
+Create Date: 2026-09-20 14:33:40.736641
 """
 from typing import Sequence, Union
 
@@ -10,7 +10,7 @@ from alembic import op
 import sqlalchemy as sa
 
 
-revision: str = '37b3d3859e5f'
+revision: str = 'aa60b4a9423d'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None

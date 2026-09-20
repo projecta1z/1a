@@ -55,6 +55,16 @@ class DirectoryState(rx.State):
     def filtered(self) -> bool:
         return bool(self.search or self.initial != "All")
 
+    @rx.var
+    def display_state(self) -> str:
+        if self.loading:
+            return "loading"
+        if self.error:
+            return "error"
+        if not self.rows:
+            return "empty"
+        return "ready"
+
     def _query(self):
         try:
             with rx.session() as session:
@@ -100,6 +110,8 @@ class DirectoryState(rx.State):
         except Exception as e:
             logging.exception(f"Error: {e}")
             self.rows = []
+            self.total = 0
+            self.indexed = 0
             self.error = "The directory couldn't be loaded. Please try again."
         finally:
             self.loading = False
@@ -129,6 +141,7 @@ class DirectoryState(rx.State):
                     session.commit()
         except Exception as e:
             logging.exception(f"Error: {e}")
+            self.rows = []
             self.error = (
                 "The directory couldn't be initialized. Please try again."
             )
